@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script type="module" src="/static/js/script.js"></script>
+</head>
+<body>
+    <div class="BIGBOX"><h1>REGISTRO DE USUARIOS</h1></div>
+    {% if registro %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>RUT</th>
+                <th>NOMBRE</th>
+                <th>TELEFONO</th>
+                <th>EDAD</th>
+                <th>CORREO</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for data in registro %}
+            <tr>
+                <td>{{data.rut}}</td>
+                <td>{{data.nombre}}</td>
+                <td>{{data.telefono}}</td>
+                <td>{{data.edad}}</td>
+                <td>{{data.correo}}</td>
+                <td><a href="actualizar/{{data.id}}">ACTUALIZAR</a></td>
+                <td><a href="eliminar/{{data.id}}" id="eliminar">ELIMINAR</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+
+    <a href="../agregar"><button>AGREGAR</button></a>
+
+    {% else %}
+
+    <div><h1>PRIMERO TIENES QUE REGISTRAR</h1></div>
+    <br>
+
+    <a href="../agregar"><button>AGREGAR</button></a>
+
+    {% endif %}
+</body>
+</html>
